@@ -6,8 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Austin's Deli - Menu</title>
     <style>
-        
-        
         body {
             font-family: 'Roboto', sans-serif;
             margin: 0;
@@ -20,12 +18,12 @@
             padding: 20px;
             text-align: center;
             position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
         }
         header .logo {
-            position: absolute;
-            left: 20px;
-            top: 0px;
-            bottom: 0px;
             width: 100px;
             height: auto;
         }
@@ -33,11 +31,10 @@
             font-family: 'Montserrat', sans-serif;
             margin: 0;
             font-size: 2em;
+            flex: 1;
+            text-align: center;
         }
         .search-bar {
-            position: absolute;
-            right: 20px;
-            top: 25px;
             padding: 5px;
             font-size: 1em;
             border: none;
@@ -85,35 +82,69 @@
             bottom: 0;
             width: 100%;
         }
-    </style>
-        <script>
-            function searchMenu() {
-                let input = document.getElementById("menuSearch").value.toLowerCase();
-                let categories = document.querySelectorAll(".category");
-                
-                categories.forEach(category => {
-                    let rows = category.querySelectorAll("tr");
-                    let matchFound = false;
-                    
-                    rows.forEach((row, index) => {
-                        if (index === 0) return; // Skip table header
-                        let text = row.innerText.toLowerCase();
-                        if (text.includes(input)) {
-                            row.style.display = "";
-                            matchFound = true;
-                        } else {
-                            row.style.display = "none";
-                        }
-                    });
-                    category.style.display = matchFound ? "block" : "none";
-                });
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 4px 0;
+        }
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
             }
-        </script>
+            header h1 {
+                text-align: left;
+                margin-top: 10px;
+            }
+            .search-bar {
+                width: 100%;
+                margin-top: 10px;
+            }
+            .hamburger {
+                display: flex;
+            }
+            .menu-section {
+                padding-bottom: 80px; /* Adjust for footer */
+            }
+        }
+    </style>
+    <script>
+        function searchMenu() {
+            let input = document.getElementById("menuSearch").value.toLowerCase();
+            let categories = document.querySelectorAll(".category");
+            
+            categories.forEach(category => {
+                let rows = category.querySelectorAll("tr");
+                let matchFound = false;
+                
+                rows.forEach((row, index) => {
+                    if (index === 0) return; // Skip table header
+                    let text = row.innerText.toLowerCase();
+                    if (text.includes(input)) {
+                        row.style.display = "";
+                        matchFound = true;
+                    } else {
+                        row.style.display = "none";
+                    }
+                });
+                category.style.display = matchFound ? "block" : "none";
+            });
+        }
+
+       
+    </script>
 </head>
 <body>
 
 <header>
-    <img src="pixelcut-export.png" alt="Austin's Deli Logo" class="logo" style="padding-top: calc(-50px);">
+   
+    <img src="pixelcut-export.png" alt="Austin's Deli Logo" class="logo">
     <h1>Austin's Deli Menu</h1>
     <input type="text" id="menuSearch" class="search-bar" placeholder="Search menu..." onkeyup="searchMenu()">
 </header>
@@ -139,7 +170,6 @@
             <tr><td>Mochaccino</td><td>3</td><td>3.5</td></tr>
             <tr><td>Flat White</td><td>2.8</td><td>3.55</td></tr>
             <tr><td>TEA ALL Flavor</td><td>1.75</td><td></td></tr>
-
         </table>
     </div>
     
@@ -151,22 +181,17 @@
                 <th>Medium Price</th>
                 <th>Large Price</th>
             </tr>
-
             <tr><td>Ice Latte</td><td>2.65</td><td>3</td></tr>
             <tr><td>Ice Cappuccino</td><td>2.65</td><td>3</td></tr>
             <tr><td>Ice Mocha</td><td>3</td><td>3.5</td></tr>
-
             <tr><td>Mojito</td><td>2.9</td><td>3.5</td></tr>
             <tr><td>Ice Tea</td><td>3</td><td>3.5</td></tr>
             <tr><td>Ice Amrecano</td><td>2.55</td><td>2.9</td></tr>
-
             <tr><td>Milk Shake</td><td>2.9</td><td>3.5</td></tr>
             <tr><td>Frappuccino</td><td>2.9</td><td>3.5</td></tr>
             <tr><td>Energy Drinks</td><td>3.25</td><td>4.6</td></tr>
-
             <tr><td>Orange Fresh</td><td>2.9</td><td>3.5</td></tr>
             <tr><td>Lemonade</td><td>2.9</td><td>3.5</td></tr>
-
         </table>
     </div>
     
@@ -179,29 +204,23 @@
             </tr>
             <tr><td>Nutella Crepe</td><td>3</td></tr>
             <tr><td>Austin's Crepe</td><td>4.75</td></tr>
-
             <tr><td>Super Crepe</td><td>5.25</td></tr>
             <tr><td>Triple Chocolate</td><td>4.95</td></tr>
-
             <tr><td>Fettuccine Crepe</td><td>4.35</td></tr>
-            
             <tr>
                 <th>Waffle Name</th>
                 <th>Price</th>
             </tr>
             <tr><td>Austin's Waffle</td><td>4.75</td></tr>
             <tr><td>Nutella Waffle</td><td>3.25</td></tr>
-          
             <tr>
                 <th>Pancake Name</th>
                 <th>Price</th>
             </tr>
             <tr><td>Kinder Pancake</td><td>5.75</td></tr>
             <tr><td>Lotus Pancake</td><td>5.75</td></tr>
-
             <tr><td>Orio Pancake</td><td>5.75</td></tr>
             <tr><td>Nutella Pancake</td><td>5.75</td></tr>
-
             <tr>
                 <th>Ice Cream Size</th>
                 <th>Price</th>
@@ -209,11 +228,8 @@
             <tr><td>Small</td><td>1.75</td></tr>
             <tr><td>Medium</td><td>3.5</td></tr>
             <tr><td>Large</td><td>5.25</td></tr>
-
-            
         </table>
     </div>
-
 </div>
 
 <footer>
