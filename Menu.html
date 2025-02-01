@@ -11,6 +11,7 @@
             margin: 0;
             padding: 0;
             background-color: #f0dfc6;
+            font-size: 16px; /* Base font size */
         }
         header {
             background-color: #333;
@@ -19,20 +20,20 @@
             text-align: center;
             position: relative;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
+            justify-content: center;
         }
         header .logo {
             width: 100px;
             height: auto;
+            margin-bottom: 10px; /* Space between logo and text */
         }
         header h1 {
             font-family: 'Montserrat', sans-serif;
             margin: 0;
-            font-size: 2em;
-            flex: 1;
-            text-align: center;
+            font-size: 2em; /* Default size */
+            transition: font-size 0.3s ease; /* Smooth transition */
         }
         .search-bar {
             padding: 5px;
@@ -40,6 +41,7 @@
             border: none;
             border-radius: 5px;
             width: 150px;
+            margin-top: 10px; /* Space between text and search bar */
         }
         .menu-section {
             padding: 20px;
@@ -53,11 +55,12 @@
         }
         .category h2 {
             margin-top: 0;
-            font-size: 1.8em;
+            font-size: 1.8em; /* Default size */
         }
         table {
             width: 100%;
             border-collapse: collapse;
+            font-size: 1em; /* Default size */
         }
         table th, table td {
             padding: 12px;
@@ -81,36 +84,42 @@
             position: fixed;
             bottom: 0;
             width: 100%;
+            font-size: 1em; /* Default size */
         }
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-        }
-        .hamburger div {
-            width: 25px;
-            height: 3px;
-            background-color: white;
-            margin: 4px 0;
-        }
+
+        /* Responsive Text Sizes */
         @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                align-items: flex-start;
+            body {
+                font-size: 14px; /* Smaller base font size for tablets */
             }
             header h1 {
-                text-align: left;
-                margin-top: 10px;
+                font-size: 1.5em; /* Smaller header text */
+            }
+            .category h2 {
+                font-size: 1.5em; /* Smaller category headings */
+            }
+            table {
+                font-size: 0.9em; /* Smaller table text */
             }
             .search-bar {
-                width: 100%;
-                margin-top: 10px;
-            }
-            .hamburger {
-                display: flex;
+                width: 100%; /* Full width on mobile */
             }
             .menu-section {
                 padding-bottom: 80px; /* Adjust for footer */
+            }
+        }
+        @media (max-width: 480px) {
+            body {
+                font-size: 12px; /* Even smaller base font size for phones */
+            }
+            header h1 {
+                font-size: 1.2em; /* Even smaller header text */
+            }
+            .category h2 {
+                font-size: 1.2em; /* Even smaller category headings */
+            }
+            table {
+                font-size: 0.8em; /* Even smaller table text */
             }
         }
     </style>
@@ -136,15 +145,12 @@
                 category.style.display = matchFound ? "block" : "none";
             });
         }
-
-       
     </script>
 </head>
 <body>
 
 <header>
-   
-    <img src="pixelcut-export.png" alt="Austin's Deli Logo" class="logo">
+    <img src="pixelcut-export (1).png" alt="Austin's Deli Logo" class="logo">
     <h1>Austin's Deli Menu</h1>
     <input type="text" id="menuSearch" class="search-bar" placeholder="Search menu..." onkeyup="searchMenu()">
 </header>
